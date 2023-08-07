@@ -29,19 +29,21 @@ function App() {
         employeeInfo={employeeInfo}
         setEmployeeInfo={setEmployeeInfo}
       />{" "}
-      <div className="result">
-        <p>{employeeInfo.name}</p>
-        <p>
-          <b>Wage:</b> {employeeInfo.wage}
-        </p>
-        <p>
-          <b>status: </b>
-          {employeeInfo.status}
-        </p>
-        <p>
-          <b>FWT:</b> {fwt}
-        </p>
-      </div>
+      {employeeInfo && employeeInfo.name.length > 0 ? (
+        <div className="result">
+          <p>{employeeInfo.name}</p>
+          <p>
+            <b>Wage:</b> {employeeInfo.wage}
+          </p>
+          <p>
+            <b>status: </b>
+            {employeeInfo.status}
+          </p>
+          <p>
+            <b>FWT:</b> {fwt}
+          </p>
+        </div>
+      ) : null}
       <p>{JSON.stringify(employeeInfo)}</p>
     </div>
   );
