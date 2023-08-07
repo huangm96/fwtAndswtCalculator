@@ -1,0 +1,43 @@
+.employeeBasicInfo-container {
+  width: max-content;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.employeeBasicInfo-container h3 {
+  margin: 10px auto;
+}
+.employeeBasicInfo-container form {
+  display: flex;
+  flex-direction: column;
+}
+.employeeBasicInfo-container form .column {
+  display: flex;
+  flex-direction: column;
+}
+.employeeBasicInfo-container form .form-item {
+  margin-bottom: 8px;
+}
+.employeeBasicInfo-container form label {
+  font-weight: bold;
+  margin-bottom: 2px;
+  padding-right: 10px;
+}
+.employeeBasicInfo-container form input,
+.employeeBasicInfo-container form select {
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+.employeeBasicInfo-container form button {
+  font-size: 18px;
+  width: 100px;
+  padding: 10px;
+  align-self: flex-end;
+  background-color: rgb(124, 199, 124);
+  border: 1px solid darkgreen;
+  border-radius: 4px;
+  cursor: pointer;
+}

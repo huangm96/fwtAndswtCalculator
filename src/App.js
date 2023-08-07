@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import EmployeeBasicInfo from "./components/EmployeeBasicInfo";
+import FederalWithholdingTax from "./utils/FWT";
 function App() {
+  const [employeeInfo, setEmployeeInfo] = useState(null);
+  const [fwt, setFwt] = useState(0);
+  useEffect(
+    function () {
+      if (employeeInfo && employeeInfo.name.length > 0) {
+        const fwt_amount = new FederalWithholdingTax({
+          multipleJobs: employeeInfo.multipleJobs,
+          status: employeeInfo.status,
+          taxableWage: +employeeInfo.wage,
+          payPeriods: +employeeInfo.payPeriods,
+          w4: employeeInfo.w4,
+          allowances: +employeeInfo.allowances,
+        });
+        const fwtResult = fwt_amount.result();
+        setFwt(fwtResult);
+      }
+    },
+    [employeeInfo]
+  );
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <h1>FWT and SWT Calculator</h1>
+      <EmployeeBasicInfo
+        employeeInfo={employeeInfo}
+        setEmployeeInfo={setEmployeeInfo}
+      />{" "}
+      <div className="result">
+        <p>{employeeInfo.name}</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <b>Wage:</b> {employeeInfo.wage}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p>
+          <b>status: </b>
+          {employeeInfo.status}
+        </p>
+        <p>
+          <b>FWT:</b> {fwt}
+        </p>
+      </div>
+      <p>{JSON.stringify(employeeInfo)}</p>
     </div>
   );
 }
