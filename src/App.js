@@ -36,8 +36,12 @@ function App() {
             <b>Wage:</b> {employeeInfo.wage}
           </p>
           <p>
-            <b>status: </b>
+            <b>Status: </b>
             {employeeInfo.status}
+          </p>
+          <p>
+            <b>Allowances: </b>
+            {employeeInfo.allowances}
           </p>
           <p>
             <b>FWT:</b> {fwt}
